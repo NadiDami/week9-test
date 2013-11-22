@@ -86,55 +86,55 @@ describe 'the Friday test :)' do
     expect(n).to eq 'different'
   end
 
-#   specify 'total_of_array' do
-#     n = total_of_array [1, 3, 5, 6, 2, 8]
-#     expect(n).to eq 25
-#   end
+  specify 'total_of_array' do
+    n = total_of_array [1, 3, 5, 6, 2, 8]
+    expect(n).to eq 25
+  end
 
-#   specify 'double_array' do
-#     n = double_array [1, 2, 3]
-#     expect(n).to eq [1, 2, 3, 1, 2, 3]
-#   end
+  specify 'double_array' do
+    n = double_array [1, 2, 3]
+    expect(n).to eq [1, 2, 3, 1, 2, 3]
+  end
 
-#   specify 'turn_symbol_into_string' do
-#     n = turn_symbol_into_string 'foobar'
-#     expect(n).to eq 'foobar'
-#   end
+  specify 'turn_symbol_into_string' do
+    n = turn_symbol_into_string 'foobar'
+    expect(n).to eq 'foobar'
+  end
 
-#   specify 'average_of_array' do
-#     n = average_of_array [10, 15, 25]
-#     expect(n).to eq 17
-#   end
+  specify 'average_of_array' do
+    n = average_of_array [10, 15, 25]
+    expect(n).to eq 17
+  end
 
-#   specify 'get_elements_until_greater_than_five' do
-#     n = get_elements_until_greater_than_five [1, 3, 5, 4, 1, 2, 6, 2, 1, 3, 7]
-#     expect(n).to eq [1, 3, 5, 4, 1, 2]
-#   end
+  specify 'get_elements_until_greater_than_five' do
+    n = get_elements_until_greater_than_five [1, 3, 5, 4, 1, 2, 6, 2, 1, 3, 7]
+    expect(n).to eq [1, 3, 5, 4, 1, 2]
+  end
 
-#   specify 'convert_array_to_a_hash' do
-#     n = convert_array_to_a_hash ['a', 'b', 'c', 'd']
-#     expect(n).to eq({'a' => 'b', 'c' => 'd'})
-#   end
+  specify 'convert_array_to_a_hash' do
+    n = convert_array_to_a_hash ['a', 'b', 'c', 'd']
+    expect(n).to eq({'a' => 'b', 'c' => 'd'})
+  end
 
-#   specify 'get_all_letters_in_array_of_words' do
-#     n = get_all_letters_in_array_of_words ['cat', 'dog', 'fish']
-#     expect(n).to eq ['a', 'c', 'd', 'f', 'g', 'h', 'i', 'o', 's', 't']
-#   end
+  specify 'get_all_letters_in_array_of_words' do
+    n = get_all_letters_in_array_of_words ['cat', 'dog', 'fish']
+    expect(n).to eq ['a', 'c', 'd', 'f', 'g', 'h', 'i', 'o', 's', 't']
+  end
 
-#   specify 'swap_keys_and_values_in_a_hash' do
-#     n = swap_keys_and_values_in_a_hash({'a' => 'b', 'c' => 'd'})
-#     expect(n).to eq({'b' => 'a', 'd' => 'c'})
-#   end
+  specify 'swap_keys_and_values_in_a_hash' do
+    n = swap_keys_and_values_in_a_hash({'a' => 'b', 'c' => 'd'})
+    expect(n).to eq({'b' => 'a', 'd' => 'c'})
+  end
 
-#   specify 'add_together_keys_and_values' do
-#     n = add_together_keys_and_values({1 => 1, 2 => 2})
-#     expect(n).to eq 6
-#   end
+  specify 'add_together_keys_and_values' do
+    n = add_together_keys_and_values({1 => 1, 2 => 2})
+    expect(n).to eq 6
+  end
 
-#   specify 'remove_capital_letters_from_string' do
-#     n = remove_capital_letters_from_string 'Hello JohnDoe'
-#     expect(n).to eq 'ello ohnoe'
-#   end
+  specify 'remove_capital_letters_from_string' do
+    n = remove_capital_letters_from_string 'Hello JohnDoe'
+    expect(n).to eq 'ello ohnoe'
+  end
 
 #   specify 'round_up_number' do
 #     n = round_up_number 3.142
