@@ -125,7 +125,7 @@ end
 # pairing up elements. e.g. ['a', 'b', 'c', 'd'] becomes
 # {'a' => 'b', 'c' => 'd'}
 def convert_array_to_a_hash(array)
-  Hash[*array.flatten] #uses splat operator. Research its uses
+  Hash[*array] #uses splat operator. Research its uses
 end
 
 # get all the letters used in an array of words and return
@@ -133,7 +133,7 @@ end
 # . e.g. the array ['cat', 'dog', 'fish'] becomes
 # ['a', 'c', 'd', 'f', 'g', 'h', 'i', 'o', 's', 't']
 def get_all_letters_in_array_of_words(array)
-   array.map {|word| word.split(//) }.flatten.sort
+   array.map {|word| word.split(//) }.flatten.uniq.sort
 end
 
 # swap the keys and values in a hash. e.g.
@@ -200,24 +200,29 @@ end
 # where 'special character' means anything apart from the letters
 # a-z (uppercase and lower) or numbers
 def check_a_string_for_special_characters(string)
+  string =~ /\W/
 end
 
 # get the upper limit of a range. e.g. for the range 1..20, you
 # should return 20
 def get_upper_limit_of(range)
+  range.max
 end
 
 # should return true for a 3 dot range like 1...20, false for a 
 # normal 2 dot range
 def is_a_3_dot_range?(range)
+  range.max != range.last
 end
 
 # get the square root of a number
 def square_root_of(number)
+  Math.sqrt(number)
 end
 
 # count the number of words in a file
 def word_count_a_file(file_path)
+  File.read(file_path).split(' ').count 
 end
 
 # --- tougher ones ---
@@ -226,20 +231,39 @@ end
 # called call_method_from_string('foobar')
 # the method foobar should be invoked
 def call_method_from_string(str_method)
+  eval str_method
 end
 
 # return true if the date is a uk bank holiday for 2014
 # the list of bank holidays is here:
 # https://www.gov.uk/bank-holidays
 def is_a_2014_bank_holiday?(date)
+  bank_holidays_2014 = [ [1,1],[4,18],[4,21],[5,5],[5,26],[8,25], [12,25], [12,26]]
+  bank_holidays_2014.find { |month, day| date == Time.new(2014, month, day)}
+
 end
 
 # given your birthday this year, this method tells you
 # the next year when your birthday will fall on a friday
 # e.g. january 1st, will next be a friday in 2016
 # return the day as a capitalized string like 'Friday'
+
 def your_birthday_is_on_a_friday_in_the_year(birthday)
+  until birthday.strftime('%A') == "Friday" do
+    if is_leap_year?(birthday.year)
+      birthday = birthday + (60 * 60 * 24 * 366)  
+    else
+      birthday = birthday + (60 * 60 * 24 * 365)
+    end
+  end
+  birthday.year
 end
+
+#the above doesn't work properly. This is because coming up to a leap year, you need to add 366 days for those birth dates that fall after Feb 29th. 
+
+  def is_leap_year?(year)
+    year % 4 == 0 && year % 100 != 0 || year % 400 == 0
+  end
 
 # in a file, total the number of times words of different lengths
 # appear. So in a file with the text "the cat sat on the blue mat"
@@ -247,13 +271,46 @@ end
 # and 1 that is 4 letters long. Return it as a hash in the format
 # word_length => count, e.g. {2 => 1, 3 => 5, 4 => 1}
 def count_words_of_each_length_in_a_file(file_path)
+  word_lengths ={}
+  File.read(file_path).each_line do |line|
+    line.gsub(/\W/,' ').split.each do |word|
+      if word_lengths[word.length]
+        word_lengths[word.length] += 1
+      else
+        word_lengths[word.length] = 1
+      end
+    end
+  end
+  word_lengths
 end
 
 # implement fizzbuzz without modulo, i.e. the % method
 # go from 1 to 100
 # (there's no RSpec test for this one)
-def fizzbuzz_without_modulo
+
+def fizzbuzz_without_modulo number
+  return 'Fizzbuzz' if divisible_by_fifteen? number
+  return 'Buzz' if divisible_by_five? number
+  return 'Fizz' if divisible_by_three? number
+  number
 end
+
+  def divisible_by? divisor, number
+    (number / divisor) * divisor == number
+  end
+
+  def divisible_by_three? number
+    divisible_by? 3, number
+  end
+
+  def divisible_by_five? number
+    divisible_by? 5, number
+  end
+
+  def divisible_by_fifteen? number
+    divisible_by? 15, number
+  end
+
 
 # print the lyrics of the song 99 bottles of beer on the wall
 # http://www.99-bottles-of-beer.net/lyrics.html
@@ -262,4 +319,19 @@ end
 # at the end.
 # (there's no RSpec test for this one)
 def ninety_nine_bottles_of_beer
+  num_of_bottles = 99
+  while num_of_bottles > 2 do
+    puts "#{num_of_bottles} bottles of beer on the wall, #{num_of_bottles} bottles of beer."
+    puts "Take one down and pass it around, #{num_of_bottles - 1} bottles of beer on the wall."
+    puts " "
+    num_of_bottles -= 1
+  end
+    puts "2 bottles of beer on the wall, 2 bottles of beer."
+    puts "Take one down and pass it around, 1 bottle of beer on the wall."
+    puts " "  
+    puts "1 bottle of beer on the wall, 1 bottle of beer."
+    puts "Take one down and pass it around, no more bottles of beer on the wall."
+    puts " "
+    puts "No more bottles of beer on the wall, no more bottles of beer." 
+    puts "Go to the store and buy some more, 99 bottles of beer on the wall."
 end

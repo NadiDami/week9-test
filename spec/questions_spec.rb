@@ -161,58 +161,103 @@ describe 'the Friday test :)' do
     expect(n).to eq 'The Lion the Witch and the Wardrobe'
   end
 
-#   specify 'check_a_string_for_special_characters' do
-#     a = check_a_string_for_special_characters 'ABCdef123'
-#     b = check_a_string_for_special_characters 'ABC@def123!'
+  specify 'check_a_string_for_special_characters' do
+    a = check_a_string_for_special_characters 'ABCdef123'
+    b = check_a_string_for_special_characters 'ABC@def123!'
 
-#     expect(a).to be_false
-#     expect(b).to be_true
-#   end
+    expect(a).to be_false
+    expect(b).to be_true
+  end
 
-#   specify 'get_upper_limit_of' do
-#     n = get_upper_limit_of 1..20
-#     expect(n).to eq 20
-#   end
+  specify 'get_upper_limit_of' do
+    n = get_upper_limit_of 1..20
+    expect(n).to eq 20
+  end
 
-#   specify 'is_a_3_dot_range?' do
-#     a = is_a_3_dot_range? 1..20
-#     b = is_a_3_dot_range? 1...20
+  specify 'is_a_3_dot_range?' do
+    a = is_a_3_dot_range? 1..20
+    b = is_a_3_dot_range? 1...20
 
-#     expect(a).to be_false
-#     expect(b).to be_true
-#   end
+    expect(a).to be_false
+    expect(b).to be_true
+  end
 
-#   specify 'square_root_of' do
-#     a = square_root_of 9
-#     b = square_root_of 3
-#     expect(a).to eq 3.0
-#     expect(b).to eq 1.7320508075688772
-#   end
+  specify 'square_root_of' do
+    a = square_root_of 9
+    b = square_root_of 3
+    expect(a).to eq 3.0
+    expect(b).to eq 1.7320508075688772
+  end
 
-#   specify 'word_count_a_file' do
-#     n = word_count_a_file 'lorem.txt'
-#     expect(n).to eq 70
-#   end
+  specify 'word_count_a_file' do
+    n = word_count_a_file 'lorem.txt'
+    expect(n).to eq 70
+  end
 
-#   specify 'call_method_from_string' do
-#     expect { call_method_from_string('foobar') }.to raise_error(NameError)
-#   end
+  specify 'call_method_from_string' do
+    expect { call_method_from_string('foobar') }.to raise_error(NameError)
+  end
 
-#   specify 'is_a_2014_bank_holiday?' do
-#     a = is_a_2014_bank_holiday?(Time.new(2014, 8, 25))
-#     b = is_a_2014_bank_holiday?(Time.new(2014, 8, 26))
+  specify 'is_a_2014_bank_holiday?' do
+    a = is_a_2014_bank_holiday?(Time.new(2014, 8, 25))
+    b = is_a_2014_bank_holiday?(Time.new(2014, 8, 26))
 
-#     expect(a).to be_true
-#     expect(b).to be_false
-#   end
+    expect(a).to be_true
+    expect(b).to be_false
+  end
 
-#   specify 'your_birthday_is_on_a_friday_in_the_year' do
-#     n = your_birthday_is_on_a_friday_in_the_year(Time.new(2013, 1, 1))
-#     expect(n).to eq 2016
-#   end
+  specify 'your_birthday_is_on_a_friday_in_the_year' do
+    n = your_birthday_is_on_a_friday_in_the_year(Time.new(2013, 1, 1))
+    expect(n).to eq 2016
+  end
 
-#   specify 'count_words_of_each_length_in_a_file' do
-#     n = count_words_of_each_length_in_a_file('lorem.txt') || []
-#     expect(Hash[n.sort]).to eq({1=>1, 2=>5, 3=>7, 4=>12, 5=>14, 6=>4, 7=>8, 8=>6, 9=>6, 10=>2, 11=>2, 12=>3}) 
-#   end
+  specify 'count_words_of_each_length_in_a_file' do
+    n = count_words_of_each_length_in_a_file('lorem.txt') || []
+    expect(Hash[n.sort]).to eq({1=>1, 2=>5, 3=>7, 4=>12, 5=>14, 6=>4, 7=>8, 8=>6, 9=>6, 10=>2, 11=>2, 12=>3}) 
+  end
+
+  context 'fizzbuzz_without_modulo' do
+
+    it 'tells me that 3 is divisible by 3' do
+      expect(divisible_by_three?(3)).to be_true
+    end
+
+    it 'tells me that 4 is not divisible by 3' do
+      expect(divisible_by_three?(4)).to be_false
+    end
+
+    it 'tells me 5 is divisible by 5' do
+      expect(divisible_by_five?(5)).to be_true
+    end
+
+    it 'tells me that 7 is not divisible by 5' do
+      expect(divisible_by_five?(7)).to be_false
+    end
+
+    it 'tells me that 15 is divisible by 15' do
+      expect(divisible_by_fifteen?(15)).to be_true
+    end
+
+    it 'tells me that 17 is divisible by 15' do
+      expect(divisible_by_fifteen?(17)).to be_false
+    end
+
+    it 'returns 1 when given the number 1' do
+      expect(fizzbuzz_without_modulo(1)).to eq 1
+    end
+
+    it "returns 'Fizz' when given the number 3" do
+      expect(fizzbuzz_without_modulo(3)).to eq 'Fizz'
+    end
+
+    it "returns 'Buzz' when given the number 5" do
+      expect(fizzbuzz_without_modulo(5)).to eq 'Buzz'
+    end
+
+    it "returns 'Fizzbuzz' when given the number 15" do
+      expect(fizzbuzz_without_modulo(15)).to eq 'Fizzbuzz'
+    end
+
+  end
+
 end
