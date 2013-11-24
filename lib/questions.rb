@@ -21,7 +21,7 @@ end
 # don't reverse the array, but reverse every word inside it. e.g.
 # ['dog', 'monkey'] becomes ['god', 'yeknom']
 def reverse_every_element_in_array(array)
-  array.map { |element| element.reverse}
+  array.map { |element| element.reverse }
 end
 
 # given an array of student names, like ['Bob', 'Dave', 'Clive']
@@ -76,7 +76,7 @@ end
 # e.g. 'bob'. So in the array ['bob', 'radar', 'eat'], there
 # are 2 palindromes (bob and radar), so the method should return 2
 def number_of_elements_that_are_palindromes(array)
-  array.select {|element| element == element.reverse}.count
+  array.select { |element| element == element.reverse }.count
 end
 
 # return the shortest word in an array
@@ -117,7 +117,7 @@ end
 # [1, 3, 5, 4, 1, 2, 6, 2, 1, 3, 7]
 # becomes [1, 3, 5, 4, 1, 2]
 def get_elements_until_greater_than_five(array)
-  limit = array.index(array.detect {|element| element>5})
+  limit = array.index(array.detect { |element| element>5 })
   Array.new.concat(array[0...limit])
 end
 
@@ -133,7 +133,7 @@ end
 # . e.g. the array ['cat', 'dog', 'fish'] becomes
 # ['a', 'c', 'd', 'f', 'g', 'h', 'i', 'o', 's', 't']
 def get_all_letters_in_array_of_words(array)
-   array.map {|word| word.split(//) }.flatten.uniq.sort
+   array.map { |word| word.split(//) }.flatten.uniq.sort
 end
 
 # swap the keys and values in a hash. e.g.
@@ -147,7 +147,7 @@ end
 # add all the keys and all the values together, e.g.
 # {1 => 1, 2 => 2} becomes 6
 def add_together_keys_and_values(hash)
-  hash.map.inject(:+).inject(:+) #better way than repeating a method twice?
+  hash.flatten.inject(:+)
 end
 
 # take out all the capital letters from a string
@@ -239,7 +239,7 @@ end
 # https://www.gov.uk/bank-holidays
 def is_a_2014_bank_holiday?(date)
   bank_holidays_2014 = [ [1,1],[4,18],[4,21],[5,5],[5,26],[8,25], [12,25], [12,26]]
-  bank_holidays_2014.find { |month, day| date == Time.new(2014, month, day)}
+  bank_holidays_2014.find { |month, day| date == Time.new(2014, month, day) }
 
 end
 
@@ -258,7 +258,6 @@ def your_birthday_is_on_a_friday_in_the_year(birthday)
   end
   birthday.year
 end
-
 #the above doesn't work properly. This is because coming up to a leap year, you need to add 366 days for those birth dates that fall after Feb 29th. 
 
   def is_leap_year?(year)
@@ -288,12 +287,16 @@ end
 # go from 1 to 100
 # (there's no RSpec test for this one)
 
-def fizzbuzz_without_modulo number
-  return 'Fizzbuzz' if divisible_by_fifteen? number
-  return 'Buzz' if divisible_by_five? number
-  return 'Fizz' if divisible_by_three? number
-  number
-end
+  def fizzbuzz_without_modulo
+    1.upto(100) { |number| puts fizzbuzz(number) }
+  end
+
+  def fizzbuzz number
+    return 'Fizzbuzz' if divisible_by_fifteen? number
+    return 'Buzz' if divisible_by_five? number
+    return 'Fizz' if divisible_by_three? number
+    number
+  end
 
   def divisible_by? divisor, number
     (number / divisor) * divisor == number

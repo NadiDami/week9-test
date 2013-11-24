@@ -243,19 +243,19 @@ describe 'the Friday test :)' do
     end
 
     it 'returns 1 when given the number 1' do
-      expect(fizzbuzz_without_modulo(1)).to eq 1
+      expect(fizzbuzz(1)).to eq 1
     end
 
     it "returns 'Fizz' when given the number 3" do
-      expect(fizzbuzz_without_modulo(3)).to eq 'Fizz'
+      expect(fizzbuzz(3)).to eq 'Fizz'
     end
 
     it "returns 'Buzz' when given the number 5" do
-      expect(fizzbuzz_without_modulo(5)).to eq 'Buzz'
+      expect(fizzbuzz(5)).to eq 'Buzz'
     end
 
     it "returns 'Fizzbuzz' when given the number 15" do
-      expect(fizzbuzz_without_modulo(15)).to eq 'Fizzbuzz'
+      expect(fizzbuzz(15)).to eq 'Fizzbuzz'
     end
 
   end
